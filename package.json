@@ -1,0 +1,23 @@
+{
+  "name": "jump2digital-2022-backend-hackathon",
+  "version": "1.0.0",
+  "description": "The code developed for the jump2digital 2022 backend hackaton online event.\\n Create a DB from a JSON file. Create an API to show statistic from the companies in the database.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jelisa/Jump2Digital-2022-Backend-hackathon.git"
+  },
+  "keywords": [
+    "hackathon",
+    "node.js"
+  ],
+  "author": "Jelisa Iglesias",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jelisa/Jump2Digital-2022-Backend-hackathon/issues"
+  },
+  "homepage": "https://github.com/Jelisa/Jump2Digital-2022-Backend-hackathon#readme"
+}
