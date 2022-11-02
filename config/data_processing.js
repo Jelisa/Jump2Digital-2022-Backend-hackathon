@@ -5,26 +5,18 @@
 const fs = require("fs");
 const mariadb = require("mariadb");
 const ENV = require("./env.js")
-// console.log("🚀 ~ file: data_processing.js ~ line 8 ~ ENV", ENV)
 
-// Read the JSON information
-// const initialData = JSON.parse(fs.readFileSync('./data/companies.json', 'utf-8'));
-// Import the required JSON files
+// Read and Load the required JSON files
 const initialData = loadJSONFileToObject('./data/companies.json')
-console.log("🚀 ~ file: data_processing.js ~ line 12 ~ initialData", initialData[0])
-
-console.log(Object.keys(initialData[0]))
-
-// initialData.forEach((element) => insertIntoDB(element))
-
-
 
 function prepareInsertStatement(statement){
   return `INSERT INTO ${statement.table} (${statement.columns}) VALUES (${statement.values})`;
 }
 
 function processInitialData(initialData){
-  // console.log("🚀 ~ file: data_processing.js ~ line 13 ~ initialData", initialData)
+  /**
+   *  
+   */
   let elementsToInsert = ''
   initialData.map((element) => {
     let columns = [];
@@ -38,43 +30,66 @@ function processInitialData(initialData){
   })
   return elementsToInsert
 }
-processInitialData(initialData.slice(0,2));
 
 // Declare async function to make queries
-async function connection(pool){
+async function connection(pool, query){
+  /**
+   * 
+   */
   let conn;
   try {
-    conn = await pool.getConnection();
-    rows = await conn.in("SELECT * from companies_information");
-    console.log(34);  
+    // conn = await pool.getConnection();
+    // console.log(3);
+    rows = await pool.query(query);
   }
   catch (error) {
+    console.log("Failed to connect and perform", query);
     console.log(error);
   }
   finally {
-    console.log('here');
     if (conn){
-      console.log('pato');
-      return conn.end();}
+      return conn.release();}
   }
 }
 
 // async function to call the queries an process the data and finally close the pool.
 async function companies(){
+  /**
+   * 
+   */
   const pool = mariadb.createPool({
     host: ENV.MDB_HOST,
     port: ENV.MDB_PORT,
     user: ENV.MDB_USER,
     password: ENV.MDB_PASS,
     database: "companies",
+    connectTimeout : 10000,
     trace: true
   });
-  console.log(pool);
-  await connection(pool);
+  console.log('here');
+  await connection(pool, "SELECT 1 as val");
+  // Create table;
+  // const tableCreation = `CREATE TABLE IF NOT EXISTS companies_information (
+  //         id VARCHAR(255) primary key,
+  //         website VARCHAR(255) NOT NULL,
+  //         name VARCHAR(100),
+  //         founded INT(4),
+  //         size VARCHAR(25) NOT NULL,
+  //         locality VARCHAR(100),
+  //         region VARCHAR(100),
+  //         country VARCHAR(100),
+  //         industry VARCHAR(100),
+  //         linkedin_url VARCHAR(250) NOT NULL)`;
+  // console.log('here');
+  // await connection(pool, tableCreation);
+  // // Populate the table
+  // console.log('here2');
+  // let populateDBQuery = processInitialData(initialData)
+  // await connection(pool, populateDBQuery);
   pool.end();
 }
 
-// companies();
+companies();
 
 function loadJSONFileToObject(filepath){
   /**A function to read and parse JSON files
