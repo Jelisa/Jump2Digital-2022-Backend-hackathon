@@ -2,18 +2,15 @@
  * A file to process the initial json into the database.
  */
 // Required Modules
-// const fs =  require ( "fs");
-// const sqlite3 =  require ("sqlite3");
-// const path =  require ("path");
-
-// const ENV = require("./env.js");
 import fs  from "fs";
 import sqlite3 from "sqlite3";
+import PATHS from "./files_directories.json";
+
 
 // Read and Load the required JSON files
-const initialData = loadJSONFileToObject('./data/companies.json')
+const initialData = loadJSONFileToObject(PATHS.initialData);
 // console.log(initialData );
-const db = new sqlite3.Database('./data/companies.db', sqlite3.OPEN_READWRITE);
+const db = new sqlite3.Database(PATHS.dbPath, sqlite3.OPEN_READWRITE);
 // async function createAndPopulateDB (){
   db.serialize(() => {
     db.run('DROP TABLE IF EXISTS companies_information');
@@ -41,9 +38,6 @@ const db = new sqlite3.Database('./data/companies.db', sqlite3.OPEN_READWRITE);
         console.log(3, row);
     });
   });
-// }
-
-console.log('pato');
 db.close();
 
 function loadJSONFileToObject(filepath){
