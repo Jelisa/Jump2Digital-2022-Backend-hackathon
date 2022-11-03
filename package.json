@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Jelisa/Jump2Digital-2022-Backend-hackathon#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "mysql2": "^2.3.3",
     "sqlite3": "^5.1.2"
   }
 }

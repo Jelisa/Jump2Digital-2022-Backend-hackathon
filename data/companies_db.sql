@@ -5,10 +5,10 @@
 -- drop if exists companies;
 -- CREATE SCHEMA companies;
 
-USE companies;
+USE hackathon;
 
-DROP TABLE IF EXISTS companies_information;
-CREATE TABLE IF NOT EXISTS companies_information (
+DROP TABLE IF EXISTS companies;
+CREATE TABLE IF NOT EXISTS companies (
     id VARCHAR(255) primary key,
     website VARCHAR(255) NOT NULL,
     name VARCHAR(100),
