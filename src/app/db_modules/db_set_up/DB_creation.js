@@ -1,7 +1,10 @@
 import {createConnection} from 'mysql2/promise';
 
-async function createDatabaseAndTables (){
-    console.log(1);
+createDatabase();
+createTable();
+
+async function createDatabase (){
+    // console.log(1);
     const db_connection = await createConnection({
         host:'localhost', // HOST NAME
         port: 3306,
@@ -11,9 +14,10 @@ async function createDatabaseAndTables (){
     await db_connection.query(`DROP SCHEMA IF EXISTS hackathon`);
     await db_connection.execute(`CREATE SCHEMA hackathon`);
     db_connection.destroy()
+    console.log("Database created");
 }
+
 async function createTable(){
-    console.log(2);
     // Create a new database connection
     const db_connection = await createConnection({
         host:'localhost', // HOST NAME
@@ -22,9 +26,7 @@ async function createTable(){
         password:'', // DATABASE PASSWORD
         database: 'hackathon', // The name of the database
     });
-    // await connection.execute(`USE hackathon`);
     await db_connection.execute(`DROP TABLE IF EXISTS companies`);
-    console.log(3);
     await db_connection.execute(`CREATE TABLE IF NOT EXISTS companies (
       id VARCHAR(255) primary key,
       website VARCHAR(255) NOT NULL,
@@ -39,9 +41,6 @@ async function createTable(){
     )`);
     
     // Read and Load the required JSON files
-    console.log(4);
     db_connection.destroy();
+    console.log("Table created");
 }
-
-createDatabaseAndTables();
-createTable();

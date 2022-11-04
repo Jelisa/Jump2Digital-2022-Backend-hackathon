@@ -1,5 +1,7 @@
 export const ENV = {
-    MDB_HOST : "localhost", 
-    MDB_PORT : 3306, 
-    MDB_USER : "root", 
+    DB_HOST : "localhost", 
+    DB_PORT : 3306, 
+    DB_USER : "root", 
+    DB_NAME : "Hackathon",
+    DB_TABLE: 'companies' 
 }
