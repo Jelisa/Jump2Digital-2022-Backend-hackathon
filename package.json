@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "init_db": "sqlite3 data/companies.db",
-    "init_old": "node config/data_preprocessing.js",
+    "initializeDB": "node config/DB_creation && node config/DB_population",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
