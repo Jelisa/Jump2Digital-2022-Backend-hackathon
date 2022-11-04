@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "init_db": "sqlite3 data/companies.db",
-    "init_old": "node config/data_preprocessing.js",
+    "initializeDB": "node src/app/db_modules/db_set_up/DB_creation.js && node src/app/db_modules/db_set_up/DB_population.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Jelisa/Jump2Digital-2022-Backend-hackathon#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "mysql2": "^2.3.3",
     "sqlite3": "^5.1.2"
   }
 }
