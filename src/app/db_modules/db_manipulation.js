@@ -1,4 +1,4 @@
-import { pool } from "../db_functions/db_config.js";
+import { pool } from "./db_config.js";
 
 export const DBcompaniesBySize = async () => {
     /** A function to obtain the companies sorted by size.

@@ -1,4 +1,4 @@
-import { DBcompaniesBySize, DBcompaniesByCreationDate, obtainStatistics } from '../db_functions/db_manipulation.js';
+import { DBcompaniesBySize, DBcompaniesByCreationDate, obtainStatistics } from '../db_modules/db_manipulation.js';
 
 export async function orderbySize(req, res) {
     let results = await DBcompaniesBySize();
