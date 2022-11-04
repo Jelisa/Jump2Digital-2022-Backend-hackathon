@@ -16,7 +16,6 @@ async function populatDatabase() {
     const {id, website, name, founded, size, locality, region, country, industry, linkedin_url} = company;
     const SQL_INSERT = `INSERT INTO companies (id, website, name, founded, size, locality, region, country, industry, linkedin_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
     const [rows] = await pool.query(SQL_INSERT, [id, website, name, founded, size, locality, region, country, industry, linkedin_url]);
-    // console.log(rows);
     if (rows.affectedRows == 0) {
       return "Couldn't insert the data into the database";
     }

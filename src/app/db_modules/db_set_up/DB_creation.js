@@ -4,7 +4,6 @@ createDatabase();
 createTable();
 
 async function createDatabase (){
-    // console.log(1);
     const db_connection = await createConnection({
         host:'localhost', // HOST NAME
         port: 3306,
@@ -28,16 +27,16 @@ async function createTable(){
     });
     await db_connection.execute(`DROP TABLE IF EXISTS companies`);
     await db_connection.execute(`CREATE TABLE IF NOT EXISTS companies (
-      id VARCHAR(255) primary key,
-      website VARCHAR(255) NOT NULL,
-      name VARCHAR(100),
-      founded INT(4),
-      size VARCHAR(25) NOT NULL,
-      locality VARCHAR(100),
-      region VARCHAR(100),
-      country VARCHAR(100),
-      industry VARCHAR(100),
-      linkedin_url VARCHAR(250) NOT NULL
+        id VARCHAR(255) primary key,
+        website VARCHAR(255) NOT NULL,
+        name VARCHAR(100),
+        founded INT(4),
+        size VARCHAR(25) NOT NULL,
+        locality VARCHAR(100),
+        region VARCHAR(100),
+        country VARCHAR(100),
+        industry VARCHAR(100),
+        linkedin_url VARCHAR(250) NOT NULL
     )`);
     
     // Read and Load the required JSON files
