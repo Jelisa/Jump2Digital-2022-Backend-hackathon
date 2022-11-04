@@ -1,15 +1,15 @@
 // Import the required modules
-const express = require('express');
-const path = require('path');
-const process = require('process');
-const {DBcompaniesBySize, DBcompaniesByCreationDate, obtainStatistics} = require('./app/app.js')
+import express from 'express';
+import { join } from 'path';
+import { argv, env } from 'process';
+import { DBcompaniesBySize, DBcompaniesByCreationDate, obtainStatistics } from './app/app.js';
 
 // A constant to the HTML resources folder
 const HTML_RESOURCES = 'static'
 // Read the port to listen from or use a default one
-const PORT = process.argv[2] || process.env.PORT || 4000;
+const PORT = argv[2] || env.PORT || 4000;
 // Read the hostname from the enviroment or use the localhost
-const HOSTNAME = process.env.HOSTNAME || 'localhost';
+const HOSTNAME = env.HOSTNAME || 'localhost';
 
 // Create the APP
 const APP = express();
@@ -48,8 +48,8 @@ APP.get('/API/statistics', (req, res) => {
 
 // Other addresses rise a 404 error.
 APP.get('/*', (req, res) => {
-    console.log(path.join(__dirname,'static', '404.html'))
-    res.status(404).sendFile(path.join(__dirname,'static', '404.html'));
+    console.log(join(__dirname,'static', '404.html'))
+    res.status(404).sendFile(join(__dirname,'static', '404.html'));
 });
 
 // Start to listen on the specified port.
