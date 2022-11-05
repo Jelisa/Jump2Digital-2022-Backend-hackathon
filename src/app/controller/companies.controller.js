@@ -1,6 +1,13 @@
 import { DBcompaniesBySize, DBcompaniesByCreationDate, obtainStatistics } from '../db_modules/db_manipulation.js';
 import { DB_TABLE } from '../db_modules/db_config.js';
 
+/**
+ * A function to obtain the companies information sorted by size.
+ * It needs to be asynchronous because DBcompaniesBySize is asynchronous.
+ * @param {*} req - The request object, representing the HTTP request
+ * @param {*} res - The response object, represents the HTTP response
+ * @returns 
+ */
 export async function orderbySize(req, res) {
     let results = await DBcompaniesBySize(DB_TABLE);
     if (results.length === 0){
@@ -11,7 +18,8 @@ export async function orderbySize(req, res) {
 }
 
 /**
- * 
+ * A function to obtain the companies information sorted by founding date.
+ * It needs to be asynchronous because DBcompaniesByCreationDate is asynchronous.
  * @param {*} req - The request object, representing the HTTP request
  * @param {*} res - The response object, represents the HTTP response
  * @returns The res.send object
@@ -29,6 +37,7 @@ export async function orderbyCreationDate (req, res) {
  * - Number of companies in each industria, 
  * - Number of companies in each rango de tamaños, 
  * - Number of companies in each año de creación
+ * It needs to be asynchronous because obtainStatistics is asynchronous.
  * @param {*} req - The request object, representing the HTTP request
  * @param {*} res - The response object, represents the HTTP response
  * @returns The res.send object
