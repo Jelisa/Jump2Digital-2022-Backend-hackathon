@@ -16,7 +16,7 @@ It follows the ES6 style and uses async functions to manage the asynchronous com
 This project connects to a MySQL server and it creates and populates a database using the provided information.
 It then raises a server on the http://localhost:4000, or the enviroment HOSTNAME and PORT (it can also be provided when executing the program).
 
-The API can be accesed via the following URLs:
+Using the default values the API can be accesed via the following URLs:
  - http://localhost:4000/API : Is a webpage that provides a summary of what information each endpoint returns.
  - http://localhost:4000/API : Is a webpage that provides the links to each of the endpoints.
  - http://localhost:4000/API/orderbysize : Provides a Json containing all the companies information with the companies ordered by their size in ascending order.
@@ -26,18 +26,21 @@ The API can be accesed via the following URLs:
 
 ## Installation
 
-Dentro de un ecosistema en particular, puede haber una forma común de instalar cosas, como usar Yarn, NuGet o Homebrew. Sin embargo, considere la posibilidad de que quien esté leyendo su archivo README sea un novato y desee más orientación. Enumerar los pasos específicos ayuda a eliminar la ambigüedad y hace que las personas usen su proyecto lo más rápido posible. Si solo se ejecuta en un contexto específico, como una versión de lenguaje de programación o un sistema operativo en particular, o tiene dependencias que deben instalarse manualmente, agregue también una subsección de Requisitos.
+Once the repository is cloned onto your local machine in order to use it you'll have to follow a few steps:
 
+ 1. Raise a MySQL compatible server. This IS NOT provided.
+ 2. Read/Modify the file Jump2Digital-2022-Backend-hackathon/src/config/env.js to match your MySQL enviroment parameters, DB_PORT and DB_HOST specially. By defautl it will attempt to connect via localhost and port 3306.
+ 3. Install the npm package via command line. It will automatically install any npm dependencies.
+ 3. (Optional if no DB present) Initialize and populate the database via the following command.
+ 4. Run the server via.
 
 ```shell
-    # Clone or install commands
-    npm i [project] o npm/yarn i 
-```
-
-```shell
-    # test o run commands
-    npm start
-    npm run dev ...
+    # Install commands
+    npm install 
+    # DB Initialization
+    npm run initializeDB 
+    # API
+    npm run dev
 ```
 ## Stack
 
