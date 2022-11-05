@@ -1,11 +1,16 @@
+// Jelisa Iglesias
+
+/** This module takes care of the database queries and comunnications.*/
+
 import { pool } from "./db_config.js";
 
-export const DBcompaniesBySize = async () => {
-    /** A function to obtain the companies sorted by size.
-     * @return {Object} An object containing the companies sorted by size.
-     */
+/** A function to obtain the companies sorted by size.
+ * @param {String} table -  This provides a the table to look for in the DB.
+ * @return {Object} An object containing the companies sorted by size.
+ */
+ export async function  DBcompaniesBySize (table) {
     try{
-        const [result] = await pool.query('SELECT * FROM companies ORDER BY size ASC');
+        const [result] = await pool.query('SELECT * FROM ?? ORDER BY size ASC', [table]);
         return result;
     }
     catch (err){
@@ -14,12 +19,13 @@ export const DBcompaniesBySize = async () => {
     }
 }
 
-export const DBcompaniesByCreationDate = async () => {
-    /** A function to obtain the companies sorted by creation year.
-     * @return {Object} An object containing the companies sorted by creation year.
-     */
+/** A function to obtain the companies sorted by creation year.
+ * @param {String} table -  This provides a the table to look for in the DB.
+ * @return {Object} An object containing the companies sorted by creation year.
+ */
+export async function DBcompaniesByCreationDate (table) {
     try{
-        const [result] = await pool.query('SELECT * FROM companies ORDER BY founded ASC');
+        const [result] = await pool.query('SELECT * FROM ?? ORDER BY founded ASC', [table]);
         return result;
     }
     catch (err){
@@ -28,15 +34,14 @@ export const DBcompaniesByCreationDate = async () => {
     }
 }
 
-export const obtainStatistics = async (category) => {
-    /** A function to obtain the number of companies grouped by category.
-     * @return {Object} An object containing the companies statistics.
-     */
-
+/** A function to obtain the number of companies grouped by subcategory inside a category (column).
+ * @param {String} table -  This provides a the table to look for in the DB.
+ * @param {String} category -  This provides a the column name to look for and group by in the database table.
+ * @return {Object} An object containing the companies statistics.
+ */
+ export async function  obtainStatistics (table, category) {
      try{
-        const [result] = await pool.query(`SELECT ${category}, count(*) as "number of companies" FROM companies GROUP BY ${category}`);
-        // const result2 = await pool.query('SELECT industry, count(*) as "number of companies" FROM companies GROUP BY ?', [category]);
-        // console.log("🚀 ~ file: db_manipulation.js ~ line 39 ~ obtainStatistics ~ result2", result2)
+        const [result] = await pool.query('SELECT ??, count(*) as "number of companies" FROM ?? GROUP BY ??', [category, table, category]);
         return result;
     }
     catch (err){
@@ -45,9 +50,3 @@ export const obtainStatistics = async (category) => {
     }
 
 }
-
-// module.exports = {
-//     DBcompaniesBySize : DBcompaniesBySize,
-//     DBcompaniesByCreationDate : DBcompaniesByCreationDate,
-//     obtainStatistics : obtainStatistics
-// }

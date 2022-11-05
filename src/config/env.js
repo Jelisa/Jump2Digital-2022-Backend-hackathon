@@ -1,7 +1,8 @@
-export const ENV = {
+export const BD_ENV = {
     DB_HOST : "localhost", 
     DB_PORT : 3306, 
     DB_USER : "root", 
-    DB_NAME : "Hackathon",
+    DB_PWD : "", 
+    DB_NAME : "hackathon",
     DB_TABLE: 'companies' 
 }
