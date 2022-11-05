@@ -51,4 +51,4 @@ It requires a MySQL compatible database available. Listening on port 3306.
 ## License 
 
 Inlcuir la licéncia y el link a esta
-[MIT](https://opensource.org/licenses/MIT)
+[ISC](https://opensource.org/licenses/ISC)
