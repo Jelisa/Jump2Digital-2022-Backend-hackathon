@@ -17,7 +17,7 @@ This project connects to a MySQL server and it creates and populates a database 
 It then raises a server on the http://localhost:4000, or the enviroment HOSTNAME and PORT (it can also be provided when executing the program).
 
 Using the default values the API can be accesed via the following URLs:
- - http://localhost:4000/API : Is a webpage that provides a summary of what information each endpoint returns.
+ - http://localhost:4000/ : Is a webpage that provides a summary of what information each endpoint returns.
  - http://localhost:4000/API : Is a webpage that provides the links to each of the endpoints.
  - http://localhost:4000/API/orderbysize : Provides a Json containing all the companies information with the companies ordered by their size in ascending order.
  - http://localhost:4000/API/orderbyCreationDate : Provides a Json containing all the companies information with the companies ordered by the year they were founded in ascending order, starting by the companies wiht no founding year.
