@@ -21,7 +21,7 @@ Using the default values the API can be accesed via the following URLs:
  - http://localhost:4000/API : Is a webpage that provides the links to each of the endpoints.
  - http://localhost:4000/API/orderbysize : Provides a Json containing all the companies information with the companies ordered by their size in ascending order.
  - http://localhost:4000/API/orderbyCreationDate : Provides a Json containing all the companies information with the companies ordered by the year they were founded in ascending order, starting by the companies wiht no founding year.
- - http://localhost:4000/API/statistics : Provides a Json containing the number of companies in each industry, the number of companies in each size range, and the number of companies in each fpunding year. 
+ - http://localhost:4000/API/statistics : Provides a Json containing the number of companies in each industry, the number of companies in each size range, and the number of companies in each founding year. 
 
 
 ## Installation
