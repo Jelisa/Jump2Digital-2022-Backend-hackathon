@@ -45,7 +45,9 @@ The project is implemented in Node.js v19.0.0.
 It uses the npm packages:
  - **mysql2** package to connect to a mariaDB.
  - **express** packagage to raise and manipulate the HTTP server.
-It requires a MySQL compatible database available. Listening on port 3306.
+ - **jsdoc** package to generate the developer documentation.
+
+It requires a MySQL compatible database available and listening on port 3306.
 
 
 ## License 
